@@ -1,0 +1,35 @@
+**************************************************************     nginx simple web server     ************************************************************************
+  
+     install nginx
+       -  apt update -y
+       -  apt install nginx -y
+
+       -  systemctl start nginx
+       -  systemctl enable nginx
+
+      default documentroot for redhat/centos :/  /usr/share/nginx/html
+                           for debian(ubuntu) :/  /var/www/html
+
+
+    -   on centos           ............................................   make proxy
+        cd /usr/share/nginx/html
+        cat > index.html
+        <html>
+        <body>
+        <h1>basic nginx web server   proxy</h1>
+        </body>
+        </html>
+
+    -    on debian
+          cd /var/www/html
+          cat > index.html
+          <html>
+          <body>
+          <h1>basic nginx web server</h1>
+          </body>
+          </html>
+
+
+     -  systemctl restart nginx
+     -  curl "http://192.168.144.134:80"      ...... give ip of proxy server 
+   
