@@ -120,10 +120,31 @@ NOTE = all the services have their individual xml files, are located /usr.lib/fi
 ============================================================================================================================================================================
 
 
+ -  firewall logs we can see by the follwing command
+      cd /var/log
+      cat firewalld
 
+=============================================================================================================================================================================
 
+ - syntax for adding the rich rule by using  --add-rich-rule
+      firewall-cmd --zone=dmz --add-rich-rule='rich family="ipv4" source address="192.168.144.134" reject' --permanent
+      firewall-cmd --reload
+      firewall-cmd --zone=dmz --list-all
 
+      firewall-cmd --zone=dmz --add-rich-rule='rule family="ipv4" source address="192.168.144.135/24" service name="ssh" reject' --permanent
+      firewall-cmd --reload
+      firewall-cmd --zone=dmz --list-all
 
+==============================================================================================================================================================================
+
+   - syntax for removing the rule
+      firewall-cmd --zone=dmz --remove-rich-rule='rule family="ipv4" source address="192.168.144.135/24" reject' --permanent
+      firewall-cmd --reload
+      firewall-cmd --zone=dmz --list-all 
+
+================================================================================================================================================================================
+
+ - 
 
 
 
