@@ -32,4 +32,143 @@
 
      -  systemctl restart nginx
      -  curl "http://192.168.144.134:80"      ...... give ip of proxy server 
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================================================================================================================================================================
+          load-balancer
+ 
+centos1 : 
+   -     yum install http -y
+   -     su - s 
+   -     cd /usr/www/html 
+   -     cat > index.html
+            <html>
+            <body>
+            <h1>this is a web server 1</h1>
+            </body>
+            </html>
+
+
+
+centos2 : 
+   -     yum install http -y
+   -     su - s 
+   -     cd /usr/www/html 
+   -     cat > index.html
+            <html>
+            <body>
+            <h1>this is a web server 1</h1>
+            </body>
+            </html>
+
+
+ubuntu (srever):
+         vim /etc/nginx/conf.d/loadbalancer.conf
+               upstream backend {
+                     server 192.168.144.129;
+                     server 192.168.144.130;
+                  }
+
+               server {
+                     listen 80;
+                     server_name 192.168.144.131;
+                     location / {
+                           proxy_pass http://backend;
+                     }
+                }
+      cd
+      unlink /etc/nginx/sites-enabled/default
+      systemctl restart nginx
+      curl "htpp://192.168.144.131"
+
+
+
+
+
+
+
+
+
+
+
+====================================================================================================================================================
+
+     reverse-proxy
+
+    -     su - s
+    -     /etc/nginx
+    -     cd enabled
+    -     cd sites-enabled/
+    -     ls -l 
+    -     unlink /etc/nginx/sites-enables/default
+
+
+        now make the default document root
+    -    mkdir -p  /var/www/marvels/html
+    -    mkdir -p  /var/www/thanos/html
+
+          make webpage
+    -    cat > /var/www/marvels/html/index/html
+                  <h1>marvels</h1>
+    -    cat > /var/www/thanos/html/index/html
+                   <h1>thanos</h1>
+
+    -    cd /etc/nginx/sites-available/
+           
+          make web server do configuration now
+    -     vim marvels.conf
+                    server {
+                             listen 80 default_server;
+                             listen [::]:80 default_server;
+                             root /var/www/marvels/html;
+                             index index.html index.htm index.nginx-debian.html;
+                             server_name marvels.com www.marvels.com;
+                      
+                             location / {
+                                   try_files $uri $uri/ = 404;
+                             }
+                      }
+     -     vim thanos.conf
+                    server
+                                {
+                                	listen 80;
+                                	listen [::]:80;
+                                	root /var/www/thanos2/html;
+                                	index index.html index.htm index.nginx_debian.html;
+                                	server_name thanos2.com www.thanos2.com;
+                                	location / {
+                                			try_files $uri $uri/ =404;
+                                		}
+                                }
+
+      -   now link
+            ln -s /etc/nginx/sites-available/marvels.conf /etc/nginx/sites-enabled/marvels.conf
+            ln -s /etc/nginx/sites-available/thanos.conf /etc/nginx/sites-enabled/thanos.conf          
+
+      -     nginx -t
+      -     systemctl restart nginx
+
+      -     now configuration force dns
+               cd /etc/hosts
+                      192.168.144.131 marvels.com
+                      192.168.144.131 thanos.com
+
+     -    now got browser
+                marvels.com
+                thanos.com
+
+              192.168.144.131:marvels.com
