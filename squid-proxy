@@ -1,0 +1,8 @@
+install
+   yum install squid -y
+   apt install squid -y
+
+su - root 
+/etc/squid/                       ..........................  it stores the configuration
+/var/log/squid/                   ..........................  stores the log
+/var/spool/squid/                 ..........................  stores the cache (default)
