@@ -112,7 +112,7 @@ ubuntu (srever):
 
      reverse-proxy
 
-      centos machine
+      ubuntu machine
     -     su - s                .. go into the root
     -     /etc/nginx
     -     cd enabled
@@ -128,10 +128,12 @@ ubuntu (srever):
           make webpage
     -    cat > /var/www/marvels/html/index.html
                   <h1>marvels</h1>
-    -    cat > /var/www/thanos/html/index.html
+    
+   -    cat > /var/www/thanos/html/index.html
                    <h1>thanos</h1>
 
-    -    cd /etc/nginx/sites-available/
+    
+   -    cd /etc/nginx/sites-available/
            
           make web server do configuration now
     -     vim marvels.conf
@@ -163,7 +165,7 @@ ubuntu (srever):
             ln -s /etc/nginx/sites-available/marvels.conf /etc/nginx/sites-enabled/marvels.conf
             ln -s /etc/nginx/sites-available/thanos.conf /etc/nginx/sites-enabled/thanos.conf          
 
-      -     nginx -t
+      -     nginx -t               ......   to check the configurtion is correct or not (validate)
       -     systemctl restart nginx
 
       -     now configuration force dns
