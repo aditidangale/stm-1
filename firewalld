@@ -3,7 +3,8 @@ Install firewall for (redhat and centos)
       or 
       dnf install firewalld -y
 
-
+  systemctl status firewalld
+  systemctl start firewalld
 ==============================================================================================================================================
 - to get the current state of the firewalld services
      firewall-cmd --state   
@@ -31,7 +32,8 @@ Install firewall for (redhat and centos)
 
 -  listing firewall rules for the default zones
       firewall-cmd --list-all
-    if you want to see the rules for the specific zone
+    
+   if you want to see the rules for the specific zone
       firewall-cmd --zone=dmz --list-all
 
 ======================================================================================================================================================================
@@ -96,7 +98,8 @@ NOTE = all the services have their individual xml files, are located /usr.lib/fi
 
 ==========================================================================================================================================================================
 
--   if you want to deny the access of ssh on the machine , so you just need to remove ssh servivces from the public (or current) zone
+-   if you want to deny the access of ssh on the machine , so you just need to remove ssh servivces from
+        the public (or current) zone
         firewall-cmd --zone=public --remove-service=ssh
         firewall-cmd --reload
         firewall-cmd --zone=public --list-all
@@ -106,7 +109,7 @@ NOTE = all the services have their individual xml files, are located /usr.lib/fi
  -  to add port number
      firewall-cmd --zone=public --add-port=2020/tcp --permanent
            or
-     firewall-cmd --zone=public --add-port-8080/tcp --add-port=8443/tcp --permanent    ....................   to multiple port
+     firewall-cmd --zone=public --add-port=8080/tcp --add-port=8443/tcp --permanent    ....................   to multiple port
      firewall-cmd --reload
      firewall-cmd --list-all
 
@@ -127,7 +130,7 @@ NOTE = all the services have their individual xml files, are located /usr.lib/fi
 =============================================================================================================================================================================
 
  - syntax for adding the rich rule by using  --add-rich-rule
-      firewall-cmd --zone=dmz --add-rich-rule='rich family="ipv4" source address="192.168.144.134" reject' --permanent
+      firewall-cmd --zone=dmz --add-rich-rule='rule family="ipv4" source address="192.168.144.134" reject' --permanent
       firewall-cmd --reload
       firewall-cmd --zone=dmz --list-all
 
