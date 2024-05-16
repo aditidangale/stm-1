@@ -50,7 +50,7 @@
 
 =================================================================================================================================================================================================
           load-balancer
- 
+         
 centos1 : 
    -     yum install http -y
    -     su - s 
@@ -71,25 +71,28 @@ centos2 :
    -     cat > index.html
             <html>
             <body>
-            <h1>this is a web server 1</h1>
+            <h1>this is a web server 2</h1>
             </body>
             </html>
 
 
 ubuntu (srever):
+         sudo apt install nginx -y
+
          vim /etc/nginx/conf.d/loadbalancer.conf
                upstream backend {
-                     server 192.168.144.129;
-                     server 192.168.144.130;
+                     server 192.168.144.129;                ..... centos ip 1
+                     server 192.168.144.130;                ..... centos ip 2
                   }
 
                server {
                      listen 80;
-                     server_name 192.168.144.131;
+                     server_name 192.168.144.131;         .......   ubuntu ip (server)
                      location / {
                            proxy_pass http://backend;
                      }
                 }
+      
       cd
       unlink /etc/nginx/sites-enabled/default
       systemctl restart nginx
