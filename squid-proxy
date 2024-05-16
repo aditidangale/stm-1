@@ -1,6 +1,9 @@
 install
-   yum install squid -y
-   apt install squid -y
+   yum install squid -y             .. centos
+   apt install squid -y             .. ubuntu
+
+
+centos
 
 su - root 
 /etc/squid/                       ..........................  it stores the configuration
@@ -22,6 +25,8 @@ systemctl -k reconfigure
 
 ======================                       rules            ==================================================================
 
+in centos go to preferences->newtork settings -> click on settings -> click on proxy add ip(server ip) and port(by default squid port is 3128)
+
 
 allow or deny internet acccess
 
@@ -29,7 +34,7 @@ allow or deny internet acccess
 -----------  alllow internet for specific ip   ----------------
 vim /etc/squid/squid.conf
     acl internet_allow src 192.168.144.131 
-    http_access allow internet_access
+    http_access allow internet_allow
 
 deny internet for specific ip
 vim /etc/squid/squid.conf
@@ -53,7 +58,7 @@ vim /etc/squid/squid.conf
 ===========                 to block the domain     =============================
 
 vim /etc/squid/squid.conf
-    acl blocksites dstdomain .facebook.com .youtube.com 
+    acl blocksites dstdomain .facebook.com .youtube.com                (....   dstdomain is a reserved word dont change it)
     http_access deny blocksites
 
 
@@ -61,7 +66,7 @@ vim /etc/squid/squid.conf
 
 =====================   if you want to allow or block specific website then make the entry of blocksites  ===================
 
-      cat > etc/squid/blocked-sites.squid
+      cat > /etc/squid/blocked-sites.squid                             (blocked-sites is a file name)
            tesla.com
            gmail.com
 
@@ -82,7 +87,7 @@ vim /etc/squid/squid.conf
 
     ------------ to block a specific port    ----------
       vim /etc/squid/squid.conf
-          acl block_port port 80
+          acl block_port port 80   
           http_access deny block_port
 
       vim /etc/squid/squid.conf
@@ -96,9 +101,10 @@ vim /etc/squid/squid.conf
         gambling
         spyware
         bad
+
     vim /etc/squid/squid.conf
         acl bad_keyword url_regex "/etc/squid/block_keywords.txt"
-        http_access deny bad_keywords
+        http_access deny bad_keyword
 
 
 
