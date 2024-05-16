@@ -59,10 +59,23 @@ do this settings
 
         note : to check the scapy IP()/TCP()
                 first need to install scapy 
-              ubuntu :     sudo apt install scapy -y
-              centos :     yum install epel-release -y
-                               or
-                           yum install scapy -y
+            
 
-        scapy       (just type scapy and enter you will go into the scapy terminal(shell))
+5)    content detection
+         vim /etc/snort/rules/local.rules
+           alert tcp any any -> $HOME_NET 22 (msg:"ssh attempt";content:"SSH";sid:100001;rev:1;)         (rev:1    is optional)
+       to run 
+           snort -A console -q -i ens33 -c /etc/snort/snort.conf
 
+
+6)    logging and storing ASCII
+        vim /etc/snort/rules/local.rules
+           alert tcp any any -> $HOME_NET 22 (content:"SSH";msg:"ssh attempt";sid:100001;rev:1;)             (rev:1    is optional)
+       to run 
+           snort -A console -q -i ens33 -c /etc/snort/snort.conf -k ascii
+
+7)    variables 
+           -  you can also create new 'var' for rules
+      syntax :   var: <name> <value>
+                 var MY-NET[192.166.1.0/24 , 10.1.1.0/24]
+                 alert tcp any any -> $MY_NET any (flags:S;msg:"syn packets";sid:100001;)
