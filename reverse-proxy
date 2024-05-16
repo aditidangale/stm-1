@@ -112,7 +112,8 @@ ubuntu (srever):
 
      reverse-proxy
 
-    -     su - s
+      centos machine
+    -     su - s                .. go into the root
     -     /etc/nginx
     -     cd enabled
     -     cd sites-enabled/
@@ -125,9 +126,9 @@ ubuntu (srever):
     -    mkdir -p  /var/www/thanos/html
 
           make webpage
-    -    cat > /var/www/marvels/html/index/html
+    -    cat > /var/www/marvels/html/index.html
                   <h1>marvels</h1>
-    -    cat > /var/www/thanos/html/index/html
+    -    cat > /var/www/thanos/html/index.html
                    <h1>thanos</h1>
 
     -    cd /etc/nginx/sites-available/
