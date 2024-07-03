@@ -43,7 +43,7 @@ Install firewall for (redhat and centos)
        -   firewall-cmd --zone=dmz --change-interface=ens33
        -   firewall-cmd --zone=dmz --add-interface=ens33
        -   firewall-cmd --zone=dmz --remove-interface=ens33
-       -   firewall-cmd --zone-dmz --list-interfaces
+       -   firewall-cmd --zone=dmz --list-interfaces
 
 =======================================================================================================================================================================
 
