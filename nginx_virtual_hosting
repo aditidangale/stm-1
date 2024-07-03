@@ -54,7 +54,7 @@
 centos1 : 
    -     yum install httpd -y
    -     su - s 
-   -     cd /usr/www/html 
+   -     cd /var/www/html 
    -     cat > index.html
             <html>
             <body>
@@ -67,7 +67,7 @@ centos1 :
 centos2 : 
    -     yum install httpd -y
    -     su - s 
-   -     cd /usr/www/html 
+   -     cd /var/www/html 
    -     cat > index.html
             <html>
             <body>
