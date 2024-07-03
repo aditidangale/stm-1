@@ -52,7 +52,7 @@
           load-balancer
          
 centos1 : 
-   -     yum install http -y
+   -     yum install httpd -y
    -     su - s 
    -     cd /usr/www/html 
    -     cat > index.html
@@ -65,7 +65,7 @@ centos1 :
 
 
 centos2 : 
-   -     yum install http -y
+   -     yum install httpd -y
    -     su - s 
    -     cd /usr/www/html 
    -     cat > index.html
