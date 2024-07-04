@@ -205,4 +205,18 @@ to alllow specific header for squid to modify clients request
     # curl -x 192.168.144.136:3128 http://testphp.vulnweb.com -I
                 squid ip               website                 response header
 
+======================================================================================================================================
 
+   Q]   install and configure sqquid proxy to block following website for 1 machine www.youtube.com,www.wikipedia.com,www.microsoft.com
+      for 2nd machine block following web sites www.myntra.com,www.amazon.com,www.flipkart.com
+
+
+
+                 vim /etc/squid/squid.conf 
+                      acl a scr 192.168.144.148
+                      acl b scr 192.168.144.149
+                      acl banned1 dstdomain .youtube.com  .facebook.com
+                      acl banned2 dstdomain .wikipedia.org
+                      http_access deny b banned2
+                      http_access deny a banned1
+                      
