@@ -98,3 +98,7 @@ do this settings
       syntax :   var: <name> <value>
                  var MY-NET[192.166.1.0/24 , 10.1.1.0/24]
                  alert tcp any any -> $MY_NET any (flags:S;msg:"syn packets";sid:100001;)
+
+
+
+
