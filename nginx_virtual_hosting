@@ -96,7 +96,7 @@ ubuntu (srever):
       cd
       unlink /etc/nginx/sites-enabled/default
       systemctl restart nginx
-      curl "htpp://192.168.144.131"
+      curl "http://192.168.144.131"
 
 
 
