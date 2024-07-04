@@ -118,7 +118,7 @@ ubuntu (srever):
     -     cd enabled
     -     cd sites-enabled/
     -     ls -l 
-    -     unlink /etc/nginx/sites-enables/default
+    -     unlink /etc/nginx/sites-enabled/default
 
 
         now make the default document root
