@@ -1,7 +1,7 @@
 
 CentOS - 7 : 
 Add two interfaces in VM one NAT and another custom Host-Only
-for clien add interface NAT
+for client add interface NAT
 
 ens33 : 192.168.206.133/24
 ens37 : 10.0.0.100/24 
