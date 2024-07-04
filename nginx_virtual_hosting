@@ -153,9 +153,9 @@ ubuntu (srever):
                                 {
                                 	listen 80;
                                 	listen [::]:80;
-                                	root /var/www/thanos2/html;
+                                	root /var/www/thanos/html;
                                 	index index.html index.htm index.nginx_debian.html;
-                                	server_name thanos2.com www.thanos2.com;
+                                	server_name thanos.com www.thanos.com;
                                 	location / {
                                 			try_files $uri $uri/ =404;
                                 		}
