@@ -160,3 +160,49 @@ to alllow specific header for squid to modify clients request
 
 
 
+
+
+ # configure cache for squid
+
+        cache_dir ufs /var/spool/squid 1500 19 256
+
+        # assign cache memory
+
+        cache_mem 200 MB
+
+
+        # max size for an object
+
+        maximum_object_size 300 MB
+
+        # max size for cache file that will store in /var/spool/squid
+        maximum_object_size_in_memory 5 KB
+
+        # rule for cache to store some kind of data of file type
+
+        acl images_cache url_regex -i .*\.(jpg|css|jpeg|icon|gif)
+        cache allow images_cache
+
+
+    > every time changes in rule 
+    > do 
+    # squid -k check
+    # squid -k parse 
+    # squid -k reconfigure
+
+
+
+
+    > first time when cache configuration add in /etc/squid/squid.conf 
+    # systemctl restart squid
+
+
+    > check log in real time 
+    # tail -f /var/log/squid/access.log
+
+
+
+    # curl -x 192.168.144.136:3128 http://testphp.vulnweb.com -I
+                squid ip               website                 response header
+
+
