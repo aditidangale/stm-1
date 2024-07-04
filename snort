@@ -10,7 +10,7 @@ do this settings
       ipvar HOME_NET 192.168.144.0/24
 
      and comment all the rules accept local files to comment all the rules use below command
-         and also comment            include $RULE_PATH/local.rules
+         and also uncomment            include $RULE_PATH/local.rules
                      
          sudo sed -i 's/^include $RULE_PATH/#include$RULE_PATH/' /etc/snort/snort.conf          (to comment the all rule) 
 
@@ -100,5 +100,21 @@ do this settings
                  alert tcp any any -> $MY_NET any (flags:S;msg:"syn packets";sid:100001;)
 
 
+============================================================================================================================================================================
 
+             -  snort rule for ttl less than 128
+                       alert tcp any any -> any any (msg:"TTL LESS THAN 128"; ttl:<128;sid:1000003;)
+
+                        ttl:64;
+                        ttl:<64;
+                        ttl:>64;
+
+
+              -   snort rule for DNS alert
+                        alert udp any 53 -> any any (msg: "DNS PACKET";sid: 1000003;)
+
+             -    to check dns run command:
+                        hosts www.tesla.com
+                          or
+                        curl www.youtube.com
 
